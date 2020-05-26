@@ -1,0 +1,385 @@
+html{
+    box-sizing: border-box;/*Con esto evitamos que al usar el padding, no aumente su tamanio*/
+    font-size: 62.5%;/*Esto es un reset, se usa para determinar por defecto el tamanio del  texto.*/
+    /*el tamanio por defecto es 16 px, entonces con 62,5% se establece que el tamanio por defecto es 10px, entonces
+    un rem=10px*/
+  }
+*, *:before, *:after{
+    box-sizing: inherit; /*Con esto evitamos que al usar el padding, no aumentamos su tamanio*/
+}
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+/**Globales**/
+img{
+    max-width: 100%;/*Esto es para ocupar solo el tamanio total del ancho de la pantalla, esto permite que las
+    imagenes se ajusten al contenedor*/
+}
+
+.contenedor {
+    width: 95%;
+    max-width: 120rem;
+    margin: 0 auto; /*Equivalente a 0 auto 0 auto, 
+    por separado seri'a margin-top: 0 ;margin-right:auto; margin-bottom:0;margin-left:auto;  
+    la forma reducida se conoce como shorthand */
+}
+h1 {
+    font-size: 3.8rem;
+}
+h2 {
+    font-size: 3.4rem;
+}
+h3 {
+    font-size: 3rem;
+}
+h4 {
+    font-size: 2.6rem;
+}/*Se hace para definir un mismo tamanio para todos los encabezados del mismo nivel.*/
+
+/**Utilidades**/
+.seccion {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.fw-300 {
+    font-weight: 300; /*esta clase utilzaremos cuando queremos colocar 300 como grosor o peso*/
+}
+.centrar-texto {
+    text-align: center;
+    /*Le damos grosor a la letra, por defecto es 700 debido al archivo lato cargado, solo
+    se puede usar tamanios que hayan sido cargados con el archivo lato.*/
+}
+.d-block {
+    display: block!important; /*Esto se hace para que esto se aplique si' o si' y se obvie la propiedad de la cascada
+    , no es recomendable utilizarlo, solo en casos muy especi'ficos*/
+}
+.contenido-centrado {
+    max-width: 800px;
+}
+/**Botones**/
+.boton{
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;/*El enlace no tiene la linea horizontal debajo*/
+    font-size: 1.8rem;
+    padding: 1rem 3rem;
+     /*El problema de usar padding es que tambien aumenta el tamanio del elemento, para evitar esto
+    usaremos un snippet al inicio*/
+    margin-top: 3rem;
+    display: inline-block; /*De esta forma ele elemento tiene propiedades de bloque y de linea, el metodo display
+    cambia ese comportamiento, por defecto, los enlaces e imagenes tienen display inline. El display se utiliza para poder
+    jugar con margin y padding, y otros*/
+    text-align: center;
+    border: none;
+    
+}
+.boton:hover{
+    cursor: pointer;/* cursor Permite el control sobre la apariencia del cursor en un elemento,
+    pointer, con pointer le damos al cursos una apariencia de que esta tocando un enlace */
+}
+.boton-amarillo{
+    background-color: #E08709;
+}
+.boton-verde{
+    background-color: #71B100;
+}
+
+
+/*Header*/
+.site-header {
+    background-color: #333333;
+    padding: 1rem 0 3rem 0;
+}
+.site-header.inicio {
+    background-image: url(../img/header.jpg); /*usamos la imagen como fondo, se puede usar background-image que es mas especifico
+    */
+    background-position: center center;/*muestra la imagen desde el centro y lo expande en todo el contenedor*/
+    background-size: cover; /*fuerza a la imagen a tomar las dimensiones de su contenedor*/
+    height: 100vh;/*altura, se pueden usar pixeles(px)->valor fijo, vh(viewport height)-> tamanio segun la altura de la pantalla del
+    usuario->valor relativo*/
+    min-height: 60rem; /*definimos un valor minimo a la altura para que la imagen se adecue a la pantalla del usuario
+    si es que tiene una pantalla pequenia*/
+}
+.contenido-header {
+    height:100%;/*Esta tomando toda la altura de supadre, de esa forma podemos moanipularlo en la vertical*/
+    display: flex;/*solo afecto a los hijos de primera generacion, de esta forma, todos los elementos hijos se agruparan de forma 
+    flexible*/
+    flex-direction: column; /*Los agrupamos de arriba hacia abajo, se puede agrupar de izquierda a derecha con row
+    y se puede usar reverse para estos ultimos*/
+    justify-content: space-between; 
+    text-align: center;  
+}
+.contenido-header h1{
+    color: #ffffff;
+    padding-bottom: 2rem;
+    max-width: 60rem;   /*Definimos un ancho maximo para poder crear un salto de linea cuando se pase del ancho*/
+    line-height: 2;
+    
+}
+.barra{
+    display: flex; /*display es para quitar la propiedad de bloque y poder tener elementos en la misma fila, flotantes.
+    flex hace que el contenido sea flexible*/
+    justify-content: space-between; /*justify content alinea los elementos a lo largo del eje que pasa por la linea actual del contenedor*/
+    padding-top: 3rem ;/*padding es la separacion entre el contenido y el contenedor, margi se usa para las distancias entre
+    los distintos elementos*/
+    align-items: center; /*aign items alinea los elementos de acuerdo a la linea transversal, se puede ordenar 
+    de acuerdo al pie del contenido, al centro o arriba, center-> alineados de acuerdo al centro*/
+}
+
+/**Navegacion**/
+.navegacion a{/*Seleccionamos el elemento a de la clase navegacion*/
+    color: #ffffff; /*Color en forma hexadecimal, los colores como opciones en visual studio code no se recomiendan
+    porque son muy intensos. Otra forma de definir colores es con rgb, rgba, hsla*/
+    text-decoration: none;/*text decoration es para manipular el texto del enlace, no es para quitarle la linea 
+    horizontal del enlace*/
+    margin-right: 2rem; /*espaciado entre los elementos por la derecha,*/
+    font-size: 1.8rem;/*tmanio del texto, 1,8 rem es 1,8x10px (10 es tamanio por defecto asignado)*/ 
+}
+.navegacion a:hover{/*Se aplica mientras el usuario designa un elemento con un dispositivo señalador, pero no 
+    necesariamente lo activa*/
+    color: #71B100;
+}
+.navegacion a:last-of-type{/*hemos seleccionado al ultimo elemento de tipo a dentro de navegacion, es un pseudoselector*/
+    margin-right: 0;
+}
+
+/**Mobile Menu**/
+/*.mobile-menu img {
+    width: 5rem;
+}*/
+
+/**Iconos Nosotros**/
+
+.iconos-nosotros{
+    display: flex;/*De esta forma movemos los elementos para poder colocarlo en la horizontal*/
+    justify-content: space-between; /*Espacio entre los elementos y tomar todo el ancho*/
+}
+.icono{
+    flex-basis: calc(33% - 1rem) ; /*Cada elemento esta' tomando la tercera parte del tamanio del contenedor - 1 rem, ese
+    sera su ancho*/
+    text-align: center;
+}
+.icono h3{
+    text-transform: uppercase;
+}
+
+/**Anuncios**/
+.contenedor-anuncios{
+    display: flex;
+    justify-content: space-between; /*Habra una separacion entre las imagenes*/
+    flex-wrap: wrap; /*Controla si el contenedor flexible es de una o varias lineas*/
+}
+.anuncio{
+    flex: 0 0 calc(33.3% - 1rem);
+    /* shorthand es este orden:*/
+    /*flex-grow: 0;Se usa para querer ocupar mas espacio si se puede, con 0 le decimos que no*/
+    /*flex-shrink: 0;Establece el factor de contracción flexible, 0 quiere decir que no hay contraccion*/
+    /*flex-basis: ;tamanio base*/
+    border: 1px solid #B5B5B5;/*shorthand para border-style:solid, border-color:..., border_width:1px*/
+    background-color: #F5F5F5;/*Color de fondo*/
+    margin-bottom: 2rem;
+}
+.contenido-anuncio{
+   padding: 2rem; /*Espaciado de 2 rem entre el contenido y el contenedor*/
+}
+.contenido-anuncio h3, .contenido-anuncio p{
+    margin: 0;
+}
+.precio{
+    color: #71B100;
+    font-weight: 700; /* Los parrafos por default tienen 400 por weight, y los encabezados tienen 700*/
+}
+.iconos-caracteristicas{
+    list-style: none; /*Manipulamos las vinietas de las listas, none no coloca vinietas*/
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+.iconos-caracteristicas li{
+    /*flex: 1;*/
+    display: flex;
+}
+.iconos-caracteristicas li img{
+    margin-right: 2rem;
+}
+.ver-todas{
+    display: flex;
+    justify-content: flex-end;/*Lo colocamos hacia la derecha, center lo coloca ala centro y start al comienzo*/
+}
+
+/**Contacto Home**/
+.imagen-contacto{
+    background-image: url(../img/encuentra.jpg);
+    background-position: center center;
+    background-size: cover;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+}
+.contenido-contacto{
+    flex: 1; /*Es un factor de conversion para no perder el tamanio original del elemento, en este caso
+    divide el tamanio disponible entre uno y esto le asigna a cada elemento*/
+    color: #ffffff;
+}
+.contenido-contacto p{
+    font-size: 1.8rem;
+}
+
+/**Seccion Inferior**/
+
+.seccion-inferior{
+    display: flex;
+    justify-content: space-between;
+}
+.seccion-inferior .blog{
+    flex-basis: 60%; /*Su tamanio es el 60% del espacio del contenedor*/
+}
+.seccion-inferior .testimoniales{
+    flex-basis: calc(40% - 2rem);
+
+}
+.entrada-blog{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.entrada-blog:last-of-type{
+    margin-bottom: 0;
+}
+.entrada-blog .imagen{
+    flex-basis: 40%;
+
+}
+.entrada-blog .texto-entrada{
+    flex-basis: calc(60% - 3rem);
+}
+.texto-entrada a{
+    color: #000000;
+    text-decoration: none;
+}
+.texto-entrada h4{
+    margin: 0 ;
+    line-height: 1.4;
+}
+.texto-entrada h4::after{
+    content: '';
+    display: block;
+    width: 15rem;
+    height: .5rem;
+    background-color: #71B100;
+    margin-top: 1rem;
+}
+.texto-entrada span{
+    color: #E08709;
+}
+.testimonial{
+    background-color: #71B100;
+    font-size: 2.4rem;
+    padding: 2rem;
+    color: #ffffff;
+    border-radius: 2rem;/*lo usamos para darle curvatura al elemento en el borde*/
+}
+.testimonial p{
+    text-align: right;
+}
+.testimonial blockquote::before{
+    content: '';
+    background-image: url(../img/comilla.svg);
+    width: 4rem;
+    height: 4rem;
+    display: block; /*Le damos propiedades de bloque.*/
+    position: absolute;
+    left: -2rem;
+    
+}
+.testimonial blockquote{
+    position: relative;
+    padding-left: 5rem;
+    font-weight: 300;
+}
+/**Footer**/
+.site-footer{
+    background-color: #333333;
+    margin: 0;
+    
+}
+.contenedor-footer{
+    padding: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+.copyright{
+    margin: 0;
+    color: #ffffff;
+}
+
+/**Internas**/
+/**Nosotros**/
+.contenido-nosotros{
+    display: grid; /*Manipulamos los elementos como cuadriculas*/
+    grid-template-columns: 50% 50%; /*50% del tamanio total para cada elemento
+    tambien se puede usar 1fr 1fr, o repeat(2, 50%) o repeat(2, 1fr)*/
+    column-gap: 2rem; /*Espacio entre columnas, hace lo mismo que grid-column-gap pero esta es obsoleta*/
+}
+.texto-nosotros blockquote{
+    font-weight: 900;
+    font-size: 2rem;
+    margin: 0;
+    padding: 0 0 3rem 0;
+}
+/**Anuncio**/
+.resumen-propiedad{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/**Contacto**/
+.contacto p {
+    font-size: 1.4rem;
+    color: #4f4f4f;
+    margin: 2 0 0 0;
+}
+legend{
+    font-size: 2rem;
+    color: #4f4f4f;
+}
+label{
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+input:not([type="submit"]), textarea, select {/*Selecciona a todos los input menos a los de tipo submit*/
+    /*Si se quiere hacer por separado se puede hacer input[type="text"]{...} para trabajar con los text*/
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color: #e1e1e1;
+    margin-bottom: 2rem;
+    border: none;
+    border-radius: 1rem;
+}
+input[type="radio"]{
+    width: auto; /*TOma el tamaño necesario*/
+    margin: 0;
+}
+select{
+    -webkit-appearance: none;/*Cuidado con este estilo, no es estándar*/
+    appearance: none;
+}
+textarea{
+    height: 20rem;
+
+}
+.forma-contacto {
+    max-width: 30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
